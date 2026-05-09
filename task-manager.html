@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tasks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div>
+      <div class="brand">Task<span>.</span></div>
+    </div>
+
+    <div>
+      <div class="stats-grid" id="stats-grid">
+        <div class="stat-box">
+          <div class="stat-num" id="stat-total">0</div>
+          <div class="stat-label">Total</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" id="stat-done">0</div>
+          <div class="stat-label">Done</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" id="stat-pending">0</div>
+          <div class="stat-label">Pending</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" id="stat-pct">0%</div>
+          <div class="stat-label">Complete</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="filters-label">Filter</div>
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <button class="filter-btn active" data-filter="all" onclick="setFilter('all')">
+          All tasks <span class="count" id="fc-all">0</span>
+        </button>
+        <button class="filter-btn" data-filter="pending" onclick="setFilter('pending')">
+          Pending <span class="count" id="fc-pending">0</span>
+        </button>
+        <button class="filter-btn" data-filter="done" onclick="setFilter('done')">
+          Done <span class="count" id="fc-done">0</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="priority-section">
+      <div class="filters-label">Priority</div>
+      <div class="priority-legend">
+        <div class="priority-item"><div class="priority-dot" style="background:#C84B2F;"></div> High</div>
+        <div class="priority-item"><div class="priority-dot" style="background:#D49B12;"></div> Medium</div>
+        <div class="priority-item"><div class="priority-dot" style="background:#3B8C4F;"></div> Low</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <div class="top-bar">
+      <div>
+        <div class="page-title">My tasks</div>
+        <div class="date-label" id="today-date"></div>
+      </div>
+      <div style="width: 160px;">
+        <div style="font-size: 0.65rem; color: var(--ink-faint); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.08em;" id="prog-label">0% done</div>
+        <div class="progress-bar"><div class="progress-fill" id="progress" style="width:0%"></div></div>
+      </div>
+    </div>
+
+    <!-- Add form -->
+    <div class="add-form">
+      <div class="form-row">
+        <input class="task-input" type="text" id="task-input" placeholder="Add a new task…" />
+        <button class="add-btn" onclick="addTask()">+ Add</button>
+      </div>
+      <div class="form-selects">
+        <select id="priority-sel">
+          <option value="medium">Medium priority</option>
+          <option value="high">High priority</option>
+          <option value="low">Low priority</option>
+        </select>
+        <select id="category-sel">
+          <option value="general">General</option>
+          <option value="work">Work</option>
+          <option value="personal">Personal</option>
+          <option value="design">Design</option>
+          <option value="dev">Dev</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Task list -->
+    <div class="tasks-container" id="tasks-container"></div>
+  </main>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
